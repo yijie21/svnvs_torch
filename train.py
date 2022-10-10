@@ -81,9 +81,6 @@ def main(cfg: DictConfig):
             tgt_img_np = tgt_img_np.astype('uint8').transpose(1, 2, 0)
             tgt_img_pil = Image.fromarray(tgt_img_np)
             src_imgs_pil = [Image.fromarray(img) for img in src_imgs_np]
-            if use_wandb:
-                wandb.log({'tgt_img': [wandb.Image(tgt_img_pil)]})
-                wandb.log({'src_imgs': [wandb.Image(img) for img in src_imgs_pil]})
 
             # train generator
             aggregated_img_B3HW, final_out_img_B3HW, warped_imgs_BN3HW = \
@@ -121,6 +118,11 @@ def main(cfg: DictConfig):
             # print loss info
             if i % 20 == 0:
                 print(Notify.INFO, f'epoch: {epoch}, iter: {i}, loss_discrim: {loss_discrim}, loss_gen: {loss_gen}, psnr: {psnr}', Notify.ENDC)
+                if use_wandb:
+                    wandb.log({'tgt_img': [wandb.Image(tgt_img_pil)]})
+                    wandb.log({'src_imgs': [wandb.Image(img) for img in src_imgs_pil]})
+                    wandb.log({'aggregated_img': [wandb.Image(aggregated_img_pil)]})
+                    wandb.log({'final_out_img': [wandb.Image(final_out_img_pil)]})
 
             if use_wandb:
                 wandb.log({
@@ -128,8 +130,6 @@ def main(cfg: DictConfig):
                     'train loss_generator': loss_gen.item(),
                     'train psnr': psnr 
                 })
-                wandb.log({'aggregated_img': [wandb.Image(aggregated_img_pil)]})
-                wandb.log({'final_out_img': [wandb.Image(final_out_img_pil)]})
     
     # save models
     torch.save(model_d.state_dict(), 'd.pth')

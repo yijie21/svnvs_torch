@@ -95,6 +95,7 @@ class NVSDataset(Dataset):
         cam = np.zeros((2, 4, 4))
         cam[0, :3, :3] = intrin
         cam[1, :4, :4] = w2c
+        cam = cam.astype(np.float32)
         return {
             'image': image,
             'cam': cam
@@ -128,5 +129,5 @@ def resize_totensor_intrinsics(img, intrin, img_tgt_w, img_tgt_h):
     '''
     intrin_s = scale_intrinsics(intrin, img_tgt_h / img.height, img_tgt_w / img.width)
     img_s = img.resize((img_tgt_w, img_tgt_h))
-    img_t = np.array(img_s) / 255
+    img_t = np.array(img_s).astype(np.float32) / 255
     return img_t.transpose(2, 0, 1), intrin_s

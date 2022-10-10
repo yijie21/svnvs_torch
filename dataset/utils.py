@@ -3,7 +3,7 @@ from PIL import Image
 
 
 def inv_depths(depth_min, depth_max, n_depths):
-    depths = 1. / np.linspace(1 / depth_max, 1 / depth_min, n_depths)
+    depths = 1. / np.linspace(1 / depth_max, 1 / depth_min, n_depths).astype(np.float32)
     return depths
 
 
