@@ -1,6 +1,6 @@
-# paths
-data_folder: /hdd1/yijie/datasets/mvs/tnt_freeNVS
-dataset_name: tnt
+# dataset parameters
+data_folder: D:\code_repos\svnvs_torch\dataset\spaces_dataset
+dataset_name: spaces
 
 # input parameters
 n_views: 4

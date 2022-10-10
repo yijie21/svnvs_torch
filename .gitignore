@@ -1,3 +1,4 @@
+/.vscode
 __pycache__/
 dataset/__pycache__
 dataset/spaces_dataset/
