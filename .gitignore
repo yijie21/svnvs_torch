@@ -1,0 +1,7 @@
+__pycache__/
+dataset/__pycache__
+dataset/spaces_dataset/
+loss/__pycache__
+model/__pycache__
+outputs/
+wandb/

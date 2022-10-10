@@ -1,0 +1,19 @@
+# paths
+data_folder: /hdd1/yijie/datasets/mvs/tnt_freeNVS
+dataset_name: tnt
+
+# input parameters
+n_views: 4
+n_depths: 48
+max_h: 256
+max_w: 448
+
+# training parameters
+batch_size: 1
+epochs: 10
+lr: 0.0002
+beta1: 0.5
+
+# misc
+use_wandb: True
+exp_name: visibility
