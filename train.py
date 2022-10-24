@@ -20,7 +20,7 @@ isDebug = True if sys.gettrace() else False
 device = 'cuda'
 
 
-@hydra.main(config_path="config", config_name="config")
+@hydra.main(config_path="config", config_name="cfg_spaces")
 def main(cfg: DictConfig):
     # set seed
     setup_seed(0)

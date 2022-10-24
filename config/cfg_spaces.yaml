@@ -1,5 +1,5 @@
 # dataset parameters
-data_folder: D:\code_repos\svnvs_torch\dataset\spaces_dataset
+data_folder: /hdd1/yijie/code/svnvs_torch/dataset/spaces_dataset
 dataset_name: spaces
 
 # input parameters
@@ -16,4 +16,4 @@ beta1: 0.5
 
 # misc
 use_wandb: True
-exp_name: visibility
+exp_name: spaces

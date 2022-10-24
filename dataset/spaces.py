@@ -129,5 +129,5 @@ def resize_totensor_intrinsics(img, intrin, img_tgt_w, img_tgt_h):
     '''
     intrin_s = scale_intrinsics(intrin, img_tgt_h / img.height, img_tgt_w / img.width)
     img_s = img.resize((img_tgt_w, img_tgt_h))
-    img_t = np.array(img_s).astype(np.float32) / 255
+    img_t = np.array(img_s).astype(np.float32) / 255 * 2 - 1
     return img_t.transpose(2, 0, 1), intrin_s
